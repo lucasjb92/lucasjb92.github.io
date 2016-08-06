@@ -1,0 +1,48 @@
+<html>
+
+<head>
+
+<script src="https://connect.soundcloud.com/sdk/sdk-3.1.2.js"></script>
+<script src="test.js"></script>
+<script>
+  SC.initialize({
+    client_id: '48a6f9bb2cf5a7f855af430c381941d4'
+  });
+  
+function get_audio_file()
+{
+	console.log('function executed');
+	
+	var song_url = document.getElementById('url_input_field').value;
+	
+	SC.stream(song_url).then(function(player){player.play();});
+}  
+</script>
+
+
+</head>
+
+<body>
+
+<div id="sc_widget">
+</div>
+
+<form>
+<input type="text" name="song_url" id="url_input_field">
+</form>
+
+<button onclick="get_audio_file()">Play</button> 
+
+
+<!--
+<script>
+  var track_url = 'https://soundcloud.com/borntong-1/killah-b-bs-t-h';
+SC.oEmbed(track_url, { auto_play: true }).then(function(oEmbed) {
+  console.log('oEmbed response: ', oEmbed);
+  document.getElementById('sc_widget').innerHTML = oEmbed.html;
+});
+</script>
+-->
+</body>
+
+</html>
