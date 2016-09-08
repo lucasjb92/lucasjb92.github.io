@@ -1,22 +1,14 @@
 <html>
 
 <head>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <script src="https://connect.soundcloud.com/sdk/sdk-3.1.2.js"></script>
+<link rel="stylesheet" type="text/css" href="test.css">
 <script src="test.js"></script>
 <script>
   SC.initialize({
     client_id: '48a6f9bb2cf5a7f855af430c381941d4'
   });
-  
-function get_audio_file()
-{
-	console.log('function executed');
-	
-	var song_url = document.getElementById('url_input_field').value;
-	
-	SC.stream(song_url).then(function(player){player.play();});
-}  
 </script>
 
 
@@ -24,14 +16,32 @@ function get_audio_file()
 
 <body>
 
-<div id="sc_widget">
+<div id="title" align="center">
+<h1>.wav rider</h1>
 </div>
 
-<form>
-<input type="text" name="song_url" id="url_input_field">
-</form>
+<div id="canvaswrapper" align="center">
+	<canvas id="myCanvas" width="1080" height="600" style="border:1px solid #ffffff;">
+	</canvas>
+</div>
 
-<button onclick="get_audio_file()">Play</button> 
+<div id="sc_widget" align="center">
+</div>
+
+<div id="audiowrapper" align="center" style="display:none">
+	<audio id="audio_player" controls="" autoplay="" preload autobuffer></audio>
+</div>
+
+<div id="formwrapper" align="center">
+	<form>
+	<input type="text" name="song_url" id="url_input_field">
+	</form>
+</div>
+
+<div id="playwrapper" align="center">
+	<button onclick="resolve_audio_url()">Play</button> 
+	<br/>
+</div>
 
 
 <!--
